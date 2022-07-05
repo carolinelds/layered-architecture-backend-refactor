@@ -1,4 +1,4 @@
-import errorResponse from "../responses/errorResponses";
+import errorResponse from "../responses/errorResponses.js";
 
 export async function signUpService(name, email, password) {
 
