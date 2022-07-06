@@ -6,14 +6,14 @@ export function emptyInput(entity){
 }
 
 export function notFound(entity){
-    return {
+    throw {
         type: "error_not_found",
         message: `Could not find specified "${entity}"!`
     }
 }
 
 export function databaseConflict(entity){
-    return {
+    throw {
         type: "error_database_conflict",
         message: `${entity} already in use`
     }

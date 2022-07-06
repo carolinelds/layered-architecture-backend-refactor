@@ -1,13 +1,11 @@
 //import connection from "./../database.js";
 import connectDB from "./../database.js";
 import errorResponse from "./../responses/errorResponses.js";
+import bcrypt from "bcrypt";
 
 export async function signUpService(name, email, password) {
 
-    console.log("chega aqui");
     const connection = await connectDB();
-    console.log("não chega aqui");
-
 
     if (!name || !email || !password) {
         return errorResponse.emptyInput("User data fields");
