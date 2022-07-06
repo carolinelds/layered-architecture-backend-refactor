@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import cors from "cors";
 import express from "express";
-import jwt from "jsonwebtoken";
 import "express-async-errors";
 import connection from "./database.js";
 import router from "./routes/index.js";
@@ -12,40 +11,6 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 app.use(errorHandlingMiddleware);
-
-// app.post("/sign-in", async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-
-//     if (!email || !password) {
-//       return res.sendStatus(422);
-//     }
-
-//     const { rows } = await connection.query(
-//       `SELECT * FROM "users" WHERE "email"=$1`,
-//       [email]
-//     );
-//     const [user] = rows;
-
-//     if (!user || !bcrypt.compareSync(password, user.password)) {
-//       return res.sendStatus(401);
-//     }
-
-//     const token = jwt.sign(
-//       {
-//         id: user.id,
-//       },
-//       process.env.JWT_SECRET
-//     );
-
-//     res.send({
-//       token,
-//     });
-//   } catch (err) {
-//     console.error(err);
-//     res.sendStatus(500);
-//   }
-// });
 
 // app.post("/financial-events", async (req, res) => {
 //   try {

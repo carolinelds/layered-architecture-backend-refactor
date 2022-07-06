@@ -1,6 +1,6 @@
 import connectDB from "./../database.js";
 
-async function checkUserExists(email){
+async function selectUserByEmail(email){
     const connection = await connectDB();
 
     return await connection.query(
@@ -19,7 +19,7 @@ async function insertNewUser(name, email, hashedPassword){
 }
 
 const authRepository = {
-    checkUserExists,
+    selectUserByEmail,
     insertNewUser
 }
 

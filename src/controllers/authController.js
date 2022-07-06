@@ -1,4 +1,4 @@
-import { signUpService } from "../services/authServices.js";
+import { signUpService, signInService } from "../services/authServices.js";
 
 export async function signUp(req,res){
     const { name, email, password } = req.body;
@@ -9,5 +9,9 @@ export async function signUp(req,res){
 }
 
 export async function signIn(req, res){
+    const { email, password } = req.body;
 
+    const token = await signInService(email, password);
+
+    res.send(token);
 }

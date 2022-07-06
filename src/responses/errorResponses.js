@@ -19,10 +19,18 @@ export function databaseConflict(entity){
     }
 }
 
+export function unauthorizedUser(entity){
+    throw {
+        type: "error_unauthorized_user",
+        message: `${entity} is incorrect or not found`
+    }
+}
+
 const errorResponse = {
     emptyInput,
     notFound,
-    databaseConflict
+    databaseConflict,
+    unauthorizedUser
 };
 
 export default errorResponse;
