@@ -15,6 +15,7 @@ async function getFinancialEvents(userId) {
         [userId]
     );
 }
+
 const financialEventsRepository = {
     insertFinancialEvent,
     getFinancialEvents
