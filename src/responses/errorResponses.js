@@ -26,11 +26,19 @@ export function unauthorizedUser(entity){
     }
 }
 
+export function unprocessableEntity(entity){
+    throw {
+        type: "error_unprocessable_entity",
+        message: `This ${entity} is not a valid one`
+    }
+}
+
 const errorResponse = {
     emptyInput,
     notFound,
     databaseConflict,
-    unauthorizedUser
+    unauthorizedUser,
+    unprocessableEntity
 };
 
 export default errorResponse;
