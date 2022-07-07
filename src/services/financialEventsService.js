@@ -1,7 +1,7 @@
 import errorResponse from "./../responses/errorResponses.js";
 import financialEventsRepository from "./../repositories/financialEventsRepository.js";
 
-export async function financialEventsService(userId, value, type) {
+export async function addEventService(userId, value, type) {
     
     if (!value || !type) {
         return errorResponse.emptyInput("Event data fields");

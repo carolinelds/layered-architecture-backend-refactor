@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
-import { financialEventsService } from "./../services/financialEventsService.js";
+import { addEventService } from "./../services/financialEventsService.js";
+import financialEventsRepository from "../repositories/financialEventsRepository.js";
 import "./../setup.js";
 
 export async function addEvent(req, res){
@@ -10,7 +11,17 @@ export async function addEvent(req, res){
     const token = authorization.replace("Bearer ", "");
     const user = jwt.verify(token, process.env.JWT_SECRET);
     
-    await financialEventsService(user.id, value, type);
+    await addEventService(user.id, value, type);
 
     res.sendStatus(201);
+}
+
+export async function getEvents(req, res){
+    const authorization = req.headers.authorization || "";
+    const token = authorization.replace("Bearer ", "");
+    const user = jwt.verify(token, process.env.JWT_SECRET);
+
+    const events = await financialEventsRepository.getFinancialEvents(user.id);
+
+    res.send(events.rows);
 }
